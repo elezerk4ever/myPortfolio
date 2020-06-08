@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="container-fluid">
+    <div class="row">
+        {{-- Profile and about page --}}
+        <div class="col-md-4">
             <div class="card">
-                <div class="card-header"><i class="fa fa-dashboard"></i> Dashboard</div>
+                <div class="card-header"><i class="fa fa-fire"></i> Profile</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -24,14 +25,42 @@
                             <div>
                                 {{auth()->user()->email}}
                             </div>
-                            <a href="#"><i class="fa fa-edit"></i>Edit</a>
+                            <a href="#" type="button" data-toggle="modal" data-target="#profile-edit-form"><i class="fa fa-edit"></i>Edit</a>
+                            <div class="modal fade" id="profile-edit-form" tabindex="-1" role="dialog" aria-labelledby="profile-edit-form" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <form method="POST" action="#">
+                                          @csrf
+                                          @method('PUT')
+                                          <div class="form-group">
+                                              <label for="name">Name</label>
+                                          <input id="name" class="form-control" type="text" name="name" value="{{auth()->user()->name}}" required> 
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="email">Email</label>
+                                        <input id="email" class="form-control" type="text" name="email" value="{{auth()->user()->email}}" required>
+                                        </div>
+                                        <button class="btn btn-block btn-primary">
+                                            Update now!
+                                        </button>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr>
             {{-- about  --}}
-            <div class="card">
+            <div class="card mt-1" >
                 <div class="card-header d-flex justify-content-between">
                     <div>
                         <i class="fa fa-user"></i> About Me
@@ -48,7 +77,7 @@
                             </button>
                           </div>
                         <div class="modal-body">
-                            <form method="POST" action="">
+                        <form method="POST" action="{{route('about.update')}}">@csrf @method("PUT")
                                 <div class="form-group">
                                     <label for="intro">Introduction</label>
                                     <textarea id="intro" class="form-control @error('intro') is-invalid @enderror" type="text" required  name="intro">{{auth()->user()->about->intro}}</textarea>
@@ -66,7 +95,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="bdate">Birthdate</label>
-                                    <input id="bdate" class="form-control @error('bdate') is-invalid @enderror" type="text" name="img" value="{{auth()->user()->about->bdate}}" required >
+                                    <input id="bdate" class="form-control @error('bdate') is-invalid @enderror" type="text" name="bdate" value="{{auth()->user()->about->bdate}}" required >
                                     @error('bdate') <small class="text-danger">{{$message}}</small>@enderror
                                 </div>
                                 <div class="form-group">
@@ -90,7 +119,7 @@
                                     @error('age') <small class="text-danger">{{$message}}</small>@enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="isfreelance">Text</label>
+                                    <label for="isfreelance">Freelance</label>
                                     <select id="isfreelance" class="form-control" name="isFreelance">
                                         <option value="1" {{auth()->user()->about->isFreelance ? "selected":""}}>Available</option>
                                         <option value="0" {{!auth()->user()->about->isFreelance ? "selected":""}}>Not Available</option>
@@ -150,10 +179,10 @@
                         <i class="fa fa-globe"></i> Website url
                     </div>
                     <div >
-                      *  {{auth()->user()->about->website}}
+                      *  <a href="{{auth()->user()->about->website}}">{{auth()->user()->about->website}}</a>
                     </div>
                    </div>
-                   {{-- end of bdate --}}
+                   {{-- end of website --}}
                    {{-- phone --}}
                    <div class="card card-body mt-1">
                     <div class="strong">
@@ -190,7 +219,7 @@
                         <i class="fa fa-meetup"></i> Freelance
                     </div>
                     <div >
-                        {{auth()->user()->about->freelace ? "Available":"Not Available"}} 
+                        {{auth()->user()->about->isFreelance ? "Available":"Not Available"}} 
                     </div>
                    </div>
                    {{-- end of freelance --}}
@@ -199,6 +228,7 @@
             </div>
             {{-- end of about --}}
         </div>
+        {{-- end of profile and about page --}}
     </div>
 </div>
 @endsection

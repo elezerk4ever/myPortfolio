@@ -15,8 +15,9 @@ class CreateAboutsTable extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
-            $table->bigText('intro');
-            $table->bigText('objectives');
+            $table->unsignedBigInteger("user_id");
+            $table->mediumText('intro');
+            $table->mediumText  ('objectives');
             $table->string('bdate');
             $table->string('img');
             $table->string('website');

@@ -21,3 +21,4 @@ Auth::routes(['register'=>false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::put('/about','AboutController@update')->name('about.update');
+Route::put('/home','UserController@update')->name('user.update');

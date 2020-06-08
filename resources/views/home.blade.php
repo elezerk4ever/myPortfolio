@@ -36,7 +36,7 @@
                                       </button>
                                     </div>
                                     <div class="modal-body">
-                                      <form method="POST" action="#">
+                                    <form method="POST" action="{{route('user.update')}}">
                                           @csrf
                                           @method('PUT')
                                           <div class="form-group">

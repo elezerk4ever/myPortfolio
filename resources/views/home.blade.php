@@ -229,6 +229,78 @@
             {{-- end of about --}}
         </div>
         {{-- end of profile and about page --}}
+
+        {{-- Portfolio ,Education, skills and interest --}}
+        <div class="col-md-5">
+            {{-- Portfolio --}}
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-tasks"></i> Portfolio
+                </div>
+            </div>
+            {{-- end of portfolio --}}
+        </div>
+        {{-- end Portfolio ,Education, skills and interest --}}
+
+        {{-- social links --}}
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div>
+                        <i class="fa fa-link"></i> Social links
+                    </div>
+                    <a href="#" type="button" data-toggle="modal" data-target="#social-form"><i class="fa fa-plus"></i></a>
+                            <div class="modal fade" id="social-form" tabindex="-1" role="dialog" aria-labelledby="profile-edit-form" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Add Social Media links</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    <form method="POST" action="{{route('socials.store')}}">
+                                          @csrf
+                                          <div class="form-group">
+                                              <label for="name">Name</label>
+                                          <input id="name" class="form-control" type="text" name="name" required> 
+                                          </div>
+                                          <div class="form-group">
+                                            <label for="icon">Icon</label>
+                                        <input id="icon" class="form-control" type="text" name="icon"  required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="url">Url</label>
+                                        <input id="url" class="form-control" type="text" name="url"  required>
+                                        </div>
+                                        <button class="btn btn-block btn-primary">
+                                            Update now!
+                                        </button>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        @forelse (auth()->user()->socials as $social)
+                        <li class="list-group-item d-flex justify-content-between">
+                        <form style="display:none" action="{{route('socials.destroy',$social->id)}}" method="POST" id="social{{$social->id}}">
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                           <span> <i class="fa {{$social->icon}}"></i> <a href="{{$social->url}}">{{$social->name}}</a></span> <a href="#" onclick="social{{$social->id}}.submit()"><i class="fa fa-times text-danger"></i></a>
+                        </li>
+                        @empty
+                            
+                        @endforelse
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{-- end of social link --}}
     </div>
 </div>
 @endsection

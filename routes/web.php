@@ -27,3 +27,8 @@ Route::put('/home','UserController@update')->name('user.update');
 Route::post('/socials','SocialsController@store')->name('socials.store');
 Route::delete('/socials/{social}','SocialsController@destroy')->name('socials.destroy');
 
+//works 
+Route::get('/works','WorksController@index')->name('works.index');
+Route::post('/works','WorksController@store')->name('works.store');
+Route::delete('/works/{work}','WorksController@destroy')->name('works.destroy');
+Route::put('/works/{work}','WorksController@update')->name('works.update');

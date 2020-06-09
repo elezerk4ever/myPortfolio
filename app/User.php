@@ -43,4 +43,7 @@ class User extends Authenticatable
     public function socials(){
         return $this->hasMany(Social::class);
     }
+    public function works(){
+        return $this->hasMany(Work::class);
+    }
 }

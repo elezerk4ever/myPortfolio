@@ -10,8 +10,6 @@
                     <div><i class="fa fa-fire"></i> Profile</div>
                     <a href="#" type="button" data-toggle="modal" data-target="#profile-edit-form"><i class="fa fa-edit"></i>Edit</a>
                 </div>
-
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -256,7 +254,21 @@
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  ...
+                                <form action="{{route('skills.store')}}" method="POST">
+                                      @csrf
+                                      <div class="form-group">
+                                          <label for="name">Skill Name</label>
+                                          <input id="name" class="form-control" type="text" name="name" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="rate">Skill Rate</label>
+                                          <div id="skillpercentage">
+                                              50%
+                                          </div>
+                                          <input id="rate" oninput="skillpercentage.innerHTML=this.value+'%'" value="50" class="custom-range" type="range" name="rate" min="0" max="100">
+                                      </div>
+                                      <button class="btn btn-block btn-primary">Add new Skill</button>
+                                  </form>
                                 </div>
                               </div>
                             </div>
@@ -264,7 +276,30 @@
                     </div>
                 </div>
                 <div class="card-body">
-
+                    <ul class="list-group">
+                        @forelse (auth()->user()->skills as $skill)
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <span>
+                                        {{$skill->name}}
+                                    </span>
+                                    <div>
+                                        <a href="#" class="text-danger" onclick="skill{{$skill->id}}.submit()">
+                                            <i class="fa fa-remove"></i>
+                                        </a>
+                                    <form action="{{route('skills.destroy',$skill->id)}}" method="POST" id="skill{{$skill->id}}" style="display: none">@csrf @method("DELETE") </form>
+                                    </div>
+                                </div>
+                                <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: {{$skill->rate}}%;" aria-valuenow="{{$skill->rate}}" aria-valuemin="0" aria-valuemax="100">{{$skill->rate}}%</div>
+                                </div>
+                            </li>
+                        @empty
+                            <li class="list-group-item">
+                                No Skill
+                            </li>
+                        @endforelse
+                    </ul>
                 </div>
             </div>
             {{-- end of portfolio --}}

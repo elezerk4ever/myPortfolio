@@ -32,3 +32,7 @@ Route::get('/works','WorksController@index')->name('works.index');
 Route::post('/works','WorksController@store')->name('works.store');
 Route::delete('/works/{work}','WorksController@destroy')->name('works.destroy');
 Route::put('/works/{work}','WorksController@update')->name('works.update');
+
+//skils 
+Route::post('/skills','SkillsController@store')->name('skills.store');
+Route::delete('/skills/{skill}','SkillsController@destroy')->name('skills.destroy');

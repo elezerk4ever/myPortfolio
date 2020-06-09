@@ -6,7 +6,11 @@
         {{-- Profile and about page --}}
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header"><i class="fa fa-fire"></i> Profile</div>
+                <div class="card-header d-flex justify-content-between">
+                    <div><i class="fa fa-fire"></i> Profile</div>
+                    <a href="#" type="button" data-toggle="modal" data-target="#profile-edit-form"><i class="fa fa-edit"></i>Edit</a>
+                </div>
+
 
                 <div class="card-body">
                     @if (session('status'))
@@ -25,7 +29,7 @@
                             <div>
                                 {{auth()->user()->email}}
                             </div>
-                            <a href="#" type="button" data-toggle="modal" data-target="#profile-edit-form"><i class="fa fa-edit"></i>Edit</a>
+                            
                             <div class="modal fade" id="profile-edit-form" tabindex="-1" role="dialog" aria-labelledby="profile-edit-form" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
@@ -139,7 +143,7 @@
                         <i class="fa fa-info-circle"></i> Introduction
                     </div>
                     <div >
-                      *  {{auth()->user()->about->intro}}
+                       {{auth()->user()->about->intro}}
                     </div>
                    </div>
                    {{-- end intro --}}
@@ -149,7 +153,7 @@
                         <i class="fa fa-trophy"></i> Objectives
                     </div>
                     <div >
-                      *  {{auth()->user()->about->objectives}}
+                       {{auth()->user()->about->objectives}}
                     </div>
                    </div>
                    {{-- end of objectives --}}
@@ -159,7 +163,7 @@
                         <i class="fa fa-image"></i> Image url
                     </div>
                     <div >
-                      *  <a href="{{auth()->user()->about->img}}">{{auth()->user()->about->img}}</a>
+                       <a href="{{auth()->user()->about->img}}">{{auth()->user()->about->img}}</a>
                     </div>
                    </div>
                    {{-- end of img --}}
@@ -169,7 +173,7 @@
                         <i class="fa fa-birthday-cake"></i> Birthdate
                     </div>
                     <div >
-                      *  {{auth()->user()->about->bdate}}
+                       {{auth()->user()->about->bdate}}
                     </div>
                    </div>
                    {{-- end of bdate --}}
@@ -179,7 +183,7 @@
                         <i class="fa fa-globe"></i> Website url
                     </div>
                     <div >
-                      *  <a href="{{auth()->user()->about->website}}">{{auth()->user()->about->website}}</a>
+                       <a href="{{auth()->user()->about->website}}">{{auth()->user()->about->website}}</a>
                     </div>
                    </div>
                    {{-- end of website --}}
@@ -189,7 +193,7 @@
                         <i class="fa fa-phone"></i> Phone
                     </div>
                     <div >
-                       * {{auth()->user()->about->phone}}
+                        {{auth()->user()->about->phone}}
                     </div>
                    </div>
                    {{-- end of phone --}}
@@ -199,7 +203,7 @@
                         <i class="fa fa-building"></i> City
                     </div>
                     <div >
-                       * {{auth()->user()->about->city}}
+                       {{auth()->user()->about->city}}
                     </div>
                    </div>
                    {{-- end of city --}}
@@ -230,17 +234,42 @@
         </div>
         {{-- end of profile and about page --}}
 
-        {{-- Portfolio ,Education, skills and interest --}}
+        {{--skills and interest --}}
         <div class="col-md-5">
             {{-- Portfolio --}}
             <div class="card">
-                <div class="card-header">
-                    <i class="fa fa-tasks"></i> Portfolio
+                <div class="card-header d-flex justify-content-between">
+                    <div>
+                        <i class="fa fa-cogs"></i> Skills
+                    </div>
+                    <div>
+                        <a href="#" type="button" data-toggle="modal" data-target="#skill-add-form">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <div class="modal fade" id="skill-add-form" tabindex="-1" role="dialog" aria-labelledby="skill-add-form" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="skill-add-form">Add new Skill</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  ...
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="card-body">
+
                 </div>
             </div>
             {{-- end of portfolio --}}
         </div>
-        {{-- end Portfolio ,Education, skills and interest --}}
+        {{-- end skills and interest --}}
 
         {{-- social links --}}
         <div class="col-md-3">

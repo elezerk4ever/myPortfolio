@@ -294,7 +294,7 @@
                            <span> <i class="fa {{$social->icon}}"></i> <a href="{{$social->url}}">{{$social->name}}</a></span> <a href="#" onclick="social{{$social->id}}.submit()"><i class="fa fa-times text-danger"></i></a>
                         </li>
                         @empty
-                            
+                            <li class="list-group-item">No Link</li>
                         @endforelse
                     </ul>
                 </div>

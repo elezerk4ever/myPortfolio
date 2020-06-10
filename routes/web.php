@@ -43,3 +43,9 @@ Route::delete('/interests/{interest}','InterestsController@destroy')->name('inte
 
 //professions 
 Route::put('/professions','ProfessionsController@update')->name('professions.update');
+
+//resume
+Route::get('/resume','ResumeController@index')->name('resume.index');
+
+//educations 
+Route::post('/educations','EducationsController@store')->name('educations.store');

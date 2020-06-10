@@ -56,7 +56,10 @@
                             @endif
                         @else
                         <li class="nav-item">
-                            <a href="{{route('works.index')}}" class="nav-link"><i class="fa fa-file"></i> My Works</a>
+                            <a href="{{route('resume.index')}}" class="nav-link"><i class="fa fa-file"></i> My Resume</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('works.index')}}" class="nav-link"><i class="fa fa-star"></i> My Works</a>
                         </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

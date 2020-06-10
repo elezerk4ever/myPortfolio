@@ -49,3 +49,12 @@ Route::get('/resume','ResumeController@index')->name('resume.index');
 
 //educations 
 Route::post('/educations','EducationsController@store')->name('educations.store');
+Route::delete('/educations/{education}','EducationsController@destroy')->name('educations.destroy');
+
+//experiences
+Route::post('/experiences','ExperiencesController@store')->name('exp.store');
+Route::delete('/experiences/{experience}','ExperiencesController@destroy')->name('exp.destroy');
+
+//Task of experiences
+Route::post('/tasks','TasksController@store')->name('tasks.store');
+Route::delete('/tasks/{task}','TasksController@destroy')->name('tasks.destroy');

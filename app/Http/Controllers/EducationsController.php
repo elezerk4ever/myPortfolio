@@ -18,4 +18,8 @@ class EducationsController extends Controller
         return back()->withSuccess('Done!');
 
     }
+    public function destroy(\App\Education $education){
+        $education->delete();
+        return back()->withSuccess('Done!');
+    }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ProfessionsController extends Controller
 {
     public function update(Request $request){
-        $this->validate($request,[
+        $data = $this->validate($request,[
             'name'=>'required',
             'country'=>'required'
         ]);

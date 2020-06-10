@@ -435,7 +435,7 @@
                     <i class="fa fa-briefcase"></i> Current Profession
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="#">
+                <form method="POST" action="{{route('professions.update')}}">
                         @csrf
                         @method('PUT')
                         <div class="form-group">

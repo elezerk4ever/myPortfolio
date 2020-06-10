@@ -19,8 +19,8 @@ class CreateAboutsTable extends Migration
             $table->mediumText('intro');
             $table->mediumText  ('objectives');
             $table->string('bdate');
-            $table->string('img');
-            $table->string('website');
+            $table->mediumText('img');
+            $table->mediumText('website');
             $table->string('phone');
             $table->string('city');
             $table->string('age');

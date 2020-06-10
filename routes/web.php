@@ -40,3 +40,6 @@ Route::delete('/skills/{skill}','SkillsController@destroy')->name('skills.destro
 //Interests
 Route::post('/interests','InterestsController@store')->name('interests.store');
 Route::delete('/interests/{interest}','InterestsController@destroy')->name('interests.destroy');
+
+//professions 
+Route::put('/professions','ProfessionsController@update')->name('professions.update');

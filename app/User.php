@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function interests(){
         return $this->hasMany(Interest::class);
     }
+    public function profession(){
+        return $this->hasOne(Profession::class);
+    }
 }

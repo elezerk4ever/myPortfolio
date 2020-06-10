@@ -18,10 +18,10 @@ class CreateWorksTable extends Migration
             $table->unsignedBigInteger('user_id')->default(1);
             $table->string('title');
             $table->string('category');
-            $table->string('img');
+            $table->mediumText('img');
             $table->string('client');
             $table->string('date');
-            $table->string('url')->default('#');
+            $table->mediumText('url');
             $table->mediumText('details');
             $table->timestamps();
         });

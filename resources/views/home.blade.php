@@ -369,8 +369,9 @@
         </div>
         {{-- end skills and interest --}}
 
-        {{-- social links --}}
+        {{-- social links , profession and  more--}}
         <div class="col-md-3">
+            {{-- social links --}}
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div>
@@ -426,8 +427,32 @@
                     </ul>
                 </div>
             </div>
+            
+            {{-- end of social link --}}
+            {{-- profession --}}
+            <div class="card mt-1">
+                <div class="card-header">
+                    <i class="fa fa-briefcase"></i> Current Profession
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="#">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label for="name">Description</label>
+                        <input id="name" class="form-control" type="text" name="name" value="{{auth()->user()->profession->name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                        <input id="country" class="form-control" type="text" name="country" value="{{auth()->user()->profession->country}}">
+                        </div>
+                        <button class="btn btn-light btn-block">Update now</button>
+                    </form>
+                </div>
+            </div>
+            {{-- end of profession --}}
         </div>
-        {{-- end of social link --}}
+        {{-- end of social link , profession and more --}}
     </div>
 </div>
 @endsection

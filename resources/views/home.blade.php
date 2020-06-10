@@ -17,10 +17,10 @@
                         </div>
                     @endif
                     <div class="row">
-                        <div class="col-md-3 text-md-left">
+                        <div class="col-3 text-md-left">
                             <img src="{{auth()->user()->about->img}}" alt="placeholder" class="img-fluid rounded-circle">
                         </div>
-                        <div class="col-md-9 text-md-left">
+                        <div class="col-9 text-md-left">
                             <div class="h3  ">
                                 {{auth()->user()->name}}
                             </div>
@@ -234,7 +234,7 @@
 
         {{--skills and interest --}}
         <div class="col-md-5">
-            {{-- Portfolio --}}
+            {{-- skills --}}
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div>
@@ -302,7 +302,70 @@
                     </ul>
                 </div>
             </div>
-            {{-- end of portfolio --}}
+            {{-- end of skills --}}
+            {{-- interest --}}
+            <div class="card mt-1">
+                <div class="card-header d-flex justify-content-between">
+                    <div>
+                        <i class="fa fa-thumbs-up"></i> Interest
+                    </div>
+                    <div>
+                        <a href="#" type="button" data-toggle="modal" data-target="#interest-add-form">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <div class="modal fade" id="interest-add-form" tabindex="-1" role="dialog" aria-labelledby="interest-add-form" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="interest-add-form">Add new Interest</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                <form action="{{route('interests.store')}}" method="POST">
+                                      @csrf
+                                      <div class="form-group">
+                                          <label for="name">Interest Name</label>
+                                          <input id="name" class="form-control" type="text" name="name" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="icon">Icon</label>
+                                          <input id="icon" class="form-control" type="text" name="icon" required>
+                                      </div>
+                                      <button class="btn btn-block btn-primary">Add new Skill</button>
+                                  </form>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        @forelse (auth()->user()->interests as $interest)
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <span>
+                                    <i class="fa {{$interest->icon}}"></i> {{$interest->name}}
+                                    </span>
+                                    <div>
+                                        <a href="#" class="text-danger" onclick="interest{{$interest->id}}.submit()">
+                                            <i class="fa fa-remove"></i>
+                                        </a>
+                                    <form action="{{route('interests.destroy',$interest->id)}}" method="POST" id="interest{{$interest->id}}" style="display: none">@csrf @method("DELETE") </form>
+                                    </div>
+                                </div>
+                            </li>
+                        @empty
+                            <li class="list-group-item">
+                                No Interest
+                            </li>
+                        @endforelse
+                    </ul>
+                </div>
+            </div>
+            {{-- end of interest --}}
         </div>
         {{-- end skills and interest --}}
 

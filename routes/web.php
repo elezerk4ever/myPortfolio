@@ -66,4 +66,4 @@ Route::delete('/credentials/{credential}','CredentialsController@destroy')->name
 //testemonies
 Route::get('/testimonies','TestimoniesController@index')->name('testimony.index');
 Route::post('/testimonies','TestimoniesController@store')->name('testimony.store');
-Route::delete('/testimonies/testimony','TestimoniesController@destroy')->name('testimony.destroy');
+Route::delete('/testimonies/{testimony}','TestimoniesController@destroy')->name('testimony.destroy');

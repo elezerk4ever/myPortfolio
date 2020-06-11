@@ -72,13 +72,16 @@
                               "
                             </div>
                             <div>
-                              <a href="#" class="text-danger">Remove</a>
+                            <form action="{{route('testimony.destroy',$tes->id)}}" method="post" id="tes{{$tes->id}}">@csrf @method('DELETE')</form>
+                              <a href="#" class="text-danger" onclick="tes{{$tes->id}}.submit()">Remove</a>
                             </div>
                           </div>
                         </div>
                       </div>
                   @empty
-                      
+                      <div class="card card-body">
+                        No testimony found
+                      </div>
                   @endforelse
                 </div>
             </div>

@@ -56,6 +56,9 @@
                             @endif
                         @else
                         <li class="nav-item">
+                            <a href="{{route('testimony.index')}}" class="nav-link"><i class="fa fa-quote-left"></i> Testimonials</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('resume.index')}}" class="nav-link"><i class="fa fa-file"></i> My Resume</a>
                         </li>
                         <li class="nav-item">

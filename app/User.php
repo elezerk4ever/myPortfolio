@@ -64,4 +64,7 @@ class User extends Authenticatable
     public function credentials(){
         return $this->hasMany(Credential::class);
     }
+    public function testimonies(){
+        return $this->hasMany(Testimony::class);
+    }
 }

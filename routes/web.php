@@ -62,3 +62,8 @@ Route::delete('/tasks/{task}','TasksController@destroy')->name('tasks.destroy');
 //credentials
 Route::post('/credentials','CredentialsController@store')->name('credentials.store');
 Route::delete('/credentials/{credential}','CredentialsController@destroy')->name('credentials.destroy');
+
+//testemonies
+Route::get('/testimonies','TestimoniesController@index')->name('testimony.index');
+Route::post('/testimonies','TestimoniesController@store')->name('testimony.store');
+Route::delete('/testimonies/testimony','TestimoniesController@destroy')->name('testimony.destroy');

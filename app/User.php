@@ -61,4 +61,7 @@ class User extends Authenticatable
     public function experiences(){
         return $this->hasMany(Experience::class);
     }
+    public function credentials(){
+        return $this->hasMany(Credential::class);
+    }
 }

@@ -58,3 +58,7 @@ Route::delete('/experiences/{experience}','ExperiencesController@destroy')->name
 //Task of experiences
 Route::post('/tasks','TasksController@store')->name('tasks.store');
 Route::delete('/tasks/{task}','TasksController@destroy')->name('tasks.destroy');
+
+//credentials
+Route::post('/credentials','CredentialsController@store')->name('credentials.store');
+Route::delete('/credentials/{credential}','CredentialsController@destroy')->name('credentials.destroy');

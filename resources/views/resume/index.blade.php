@@ -200,6 +200,57 @@
         </div>
        </div>
        {{-- end of experience --}}
+       <div class="col-md-8">
+           {{-- credentials --}}
+       <div class="card mt-1">
+        <div class="card-header">
+            <div>
+                <i class="fa fa-folder"></i> Credentials and Certificates
+            </div>
+        </div>
+        <div class="card-body">
+            <ul class="list-group">
+                @forelse (auth()->user()->credentials as $credential)
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>
+                            {{$credential->name}} - {{$credential->year}}
+                        </span>
+                        <span>
+                        <form style="display:none" action="{{route('credentials.destroy',$credential->id)}}" method="POST" id="cred{{$credential->id}}">
+                            @csrf
+                            @method("DELETE")
+                        </form>
+                            <a href="#" class="text-danger"><i class="fa fa-times" onclick="cred{{$credential->id}}.submit()"></i></a>
+                        </span>
+                    </li>
+                @empty
+                    <li class="list-group-item">
+                        No Credential or certicates
+                    </li>
+                @endforelse
+            </ul>
+            <form method="POST" action="{{route('credentials.store')}}">
+                @csrf
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input id="name" class="form-control" type="text" name="name" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="year">Year</label>
+                            <input id="year" class="form-control" type="text" name="year">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-block btn-primary">Add new Credentials</button>
+            </form>
+        </div>
     </div>
+       </div>
+    </div>
+    
 </div>
 @endsection

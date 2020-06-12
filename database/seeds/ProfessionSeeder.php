@@ -13,7 +13,7 @@ class ProfessionSeeder extends Seeder
     {
         \App\Profession::create([
             'user_id'=>1,
-            'name'=>'Web Developer',
+            'name'=>'Full-Stack Developer',
             'country'=>'Philippines'
         ]);
     }

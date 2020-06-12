@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $user = \App\User::find(1);
+    return view('welcome',compact('user'));
 });
 
 Auth::routes(['register'=>false]);
@@ -29,6 +30,7 @@ Route::delete('/socials/{social}','SocialsController@destroy')->name('socials.de
 
 //works 
 Route::get('/works','WorksController@index')->name('works.index');
+Route::get('/works/{work}','WorksController@show')->name('works.show');
 Route::post('/works','WorksController@store')->name('works.store');
 Route::delete('/works/{work}','WorksController@destroy')->name('works.destroy');
 Route::put('/works/{work}','WorksController@update')->name('works.update');
@@ -67,3 +69,6 @@ Route::delete('/credentials/{credential}','CredentialsController@destroy')->name
 Route::get('/testimonies','TestimoniesController@index')->name('testimony.index');
 Route::post('/testimonies','TestimoniesController@store')->name('testimony.store');
 Route::delete('/testimonies/{testimony}','TestimoniesController@destroy')->name('testimony.destroy');
+
+//messages
+Route::post('/messages','MessagesController@store')->name('messages');

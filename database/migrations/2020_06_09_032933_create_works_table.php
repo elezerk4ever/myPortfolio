@@ -21,7 +21,6 @@ class CreateWorksTable extends Migration
             $table->mediumText('img');
             $table->string('client');
             $table->string('date');
-            $table->mediumText('url');
             $table->mediumText('details');
             $table->timestamps();
         });

@@ -64,6 +64,11 @@
                         <li class="nav-item">
                             <a href="{{route('works.index')}}" class="nav-link"><i class="fa fa-star"></i> My Works</a>
                         </li>
+                        <li class="nav-item">
+                        <a href="{{route('messages.index')}}" class="nav-link"><i class="fa fa-envelope"></i> Messages @if (count(auth()->user()->messages()->where('unread',true)->get()))
+                            <div class="badge badge-primary">{{count(auth()->user()->messages()->where('unread',true)->get())}}</div>
+                        @endif</a>
+                        </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>

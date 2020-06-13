@@ -72,3 +72,6 @@ Route::delete('/testimonies/{testimony}','TestimoniesController@destroy')->name(
 
 //messages
 Route::post('/messages','MessagesController@store')->name('messages');
+Route::get('/messages','MessagesController@index')->name('messages.index');
+Route::get('/messages/{message}','MessagesController@show')->name('messages.show');
+Route::delete('/messages/{message}','MessagesController@destroy')->name('messages.destroy');

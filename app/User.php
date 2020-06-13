@@ -67,4 +67,7 @@ class User extends Authenticatable
     public function testimonies(){
         return $this->hasMany(Testimony::class);
     }
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
 }

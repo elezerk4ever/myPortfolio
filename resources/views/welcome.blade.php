@@ -6,8 +6,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{{$user->name}}</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+  <meta content="The portfolio of william galas" name="description">
+  <meta content="williamgalas, william, galas, wsg, galas william, william galas" name="keywords">
 
   <!-- Favicons -->
   <link href="{{$user->about->img}}" rel="icon">

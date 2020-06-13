@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>MyResume Bootstrap Template - Index</title>
+  <title>{{$user->name}}</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -96,7 +96,7 @@
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> 30</li>
+                  <li><i class="icofont-rounded-right"></i> <strong>Age:</strong> {{$user->about->age}}</li>
                 <li><i class="icofont-rounded-right"></i> <strong>Degree:</strong> Bachelor</li>
                   <li><i class="icofont-rounded-right"></i> <strong>PhEmailone:</strong> {{$user->email}}</li>
                 <li><i class="icofont-rounded-right"></i> <strong>Freelance:</strong> {{$user->about->isFreelance ? "Available" : "Not Available"}}</li>

@@ -208,7 +208,7 @@
             <div class="resume-item">
             <h4>{{$experience->position}}</h4>
             <h5>{{$experience->duration}}</h5>
-              <p><em>{{$experience->location}} </em></p>
+              <p><em>{{$experience->company}} - {{$experience->location}} </em></p>
               <ul>
                 @foreach ($experience->tasks as $task)
                     <li>
